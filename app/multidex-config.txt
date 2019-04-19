@@ -1,0 +1,3 @@
+com/haolin/hotfix/MainActivity.class
+com/haolin/hotfix/base/BaseActivity.class
+com/haolin/hotfix/base/BaseApplication.class
