@@ -32,12 +32,12 @@
    ```xml
          implementation project(':HaoLinHotFixLibrary')
    ```
-   ④ 创建 multidex-config.txt 文件 app目录下 做一些主要类的引用
-      ```xml
+   ⑤ 创建 multidex-config.txt 文件 app目录下 做一些主要类的引用
+   ```xml
             com/haolin/hotfix/MainActivity.class
             com/haolin/hotfix/base/BaseActivity.class
             com/haolin/hotfix/base/BaseApplication.class
-      ```
+  ```
 ## 用法
 ### 初始化
 - 基础用法 Application需要继承MultiDexApplication
