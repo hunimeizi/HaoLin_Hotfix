@@ -23,9 +23,13 @@
  
  ![image](https://user-gold-cdn.xitu.io/2019/5/12/16aac806a4074ace?w=1363&h=583&f=png&s=226917)
  
- * 类加载器BaseDexClassLoader的子类是DexClassLoader，这个类主要的方法是一个数据pathList，DexElements的数组中有class.dex是主包，还有很多**.dex文件，原因是因为javaC会把我们的java文件编译成class文件，再由class文件通过sdk/build-tools/版本号/dx.bat工具转换成dex。
- * 创建我们自己的类加载器加载修复包例如classes2.dex（这个文件是从服务器进行下载）然后保存到私有目录中（data/app/....）
- * 将我们自己的dex和系统的dex进行合并，生成一个新的dexElements数组，并把我们自己的dex放在数组最前面，这样优先级最高，这样就不会加载到错误的类了
+ * 类加载器BaseDexClassLoader的子类是DexClassLoader，这个类主要的方法是一个数据pathList，DexElements的数组中
+   有class.dex是主包，还有很多**.dex文件，原因是因为javaC会把我们的java文件编译成class文件，再由class文件通过
+   sdk/build-tools/版本号/dx.bat工具转换成dex。
+ * 创建我们自己的类加载器加载修复包例如classes2.dex（这个文件是从服务器进行下载）然后保存到私有目录中
+  （data/app/....）
+ * 将我们自己的dex和系统的dex进行合并，生成一个新的dexElements数组，并把我们自己的dex放在数组最前面，这样优先级
+   最高，这样就不会加载到错误的类了
  * 通过反射技术Reflect将我们新的dexElements赋值给系统的pathList
  
  ## 配置Gradle
