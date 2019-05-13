@@ -11,11 +11,11 @@
      
  ### Tinker可以完成哪些修复
  
-    ① 代码修复
+   ① 代码修复
     
-    ② 资源修复
+   ② 资源修复
     
-    ③ SO库修复
+   ③ SO库修复
     
  ![image](https://user-gold-cdn.xitu.io/2019/5/12/16aac8066c534b52?w=1335&h=702&f=png&s=189568)
   
@@ -40,7 +40,7 @@
      
  
   
-    ② 在build.gradle android里添加
+   ② 在build.gradle android里添加
     
     ```
              dexOptions {
@@ -56,32 +56,41 @@
                          }
     ```
     
-    ③ 添加multidex 支持依赖
+   ③ 添加multidex 支持依赖
     
     ```
           implementation 'com.android.support:multidex:1.0.3'
     ```
     
-    ④ 引入 module
-    ```xml
+   ④ 引入 module
+   
+    ```
           implementation project(':HaoLinHotFixLibrary')
     ```
-    ⑤ 创建 multidex-config.txt 文件 app目录下 做一些主要类的引用
-    ```xml
-             com/haolin/hotfix/MainActivity.class
-             com/haolin/hotfix/base/BaseActivity.class
-             com/haolin/hotfix/base/BaseApplication.class
-   ```
- ## 用法
- ### 初始化
- - 基础用法 Application需要继承MultiDexApplication
+    
+   ⑤ 创建 multidex-config.txt 文件 app目录下 做一些主要类的引用
+   
+      ```
+      com/haolin/hotfix/MainActivity.class
+      com/haolin/hotfix/base/BaseActivity.class
+      com/haolin/hotfix/base/BaseApplication.class
+      
+      ```
  
-     ```java
+ ## 用法
+ 
+ ### 初始化
+ 
+ *  基础用法 Application需要继承MultiDexApplication
+ 
+     `      
      BaseApplication extends MultiDexApplication
-     ```
+     `
      
  ### 创建私有目录
-  ```
+ 
+ 
+         ```
          //修复包  现不做网络下载 从手机里拿
          File sourceFile = new File
          (Environment.getExternalStorageDirectory(), Constants.DEX_NAME);
@@ -100,9 +109,11 @@
              e.printStackTrace();
          }
      }
-  ```
+    ```
   
   ### 加载热修复文件并通过反射技术插桩
+  
+  
   ```
   package com.haolin.hotfix.library;
  
@@ -189,10 +200,13 @@
          }
      }
  
- }
+ } 
  ```
  ### 修复
-   将修复好的apk包利用解压工具打开，里面会有classes2.dex文件，与旧版本apk和该classes2.dex文件同时复制到手机里**在实际开发项目中应该将classes2.dex文件放在服务器，进行下载修复，我这只是方面demo**主要了解下核心原理，主要就是插桩技术。
+ 
+ 将修复好的apk包利用解压工具打开，里面会有classes2.dex文件，与旧版本apk和该classes2.dex文件同时复制到手机里
+ **在实际开发项目中应该将classes2.dex文件放在服务器，进行下载修复，我这只是方面demo**主要了解下核心原理，主
+ 要就是插桩技术。
    
    [Demo地址](https://github.com/hunimeizi/HaoLin_Hotfix)
  
